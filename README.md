@@ -7,8 +7,8 @@ The Cassandra Oracle Cloud Infrastructure Module provides a Terraform-based Cass
 ![Cassandra cluster architecture](images/architecture.png)
 
 ## Prerequisites
-1. Download and install Terraform (v0.10.3 or later)
-2. Download and install the OCI Terraform Provider (v2.0.0 or later)
+1. Download and install Terraform (v0.13 or later)
+2. Download and install the OCI Terraform Provider (v4.10 or later)
 3. Export OCI credentials. (this refer to the https://github.com/oracle/terraform-provider-oci )
 4. An existing VCN with subnets, and those subnets need internet access in order to download tools and files.
 
@@ -22,7 +22,8 @@ Each Module has the following folder structure:
 * [modules](): This folder contains the reusable code for this Module, broken down into one or more modules.
 * [examples](): This folder contains examples of how to use the modules.
   - [example-1](examples/example-1): This is an example of how to use terraform-oci-cassandra-cluster module to deploy a Cassandra cluster in OCI by using an existing VCN, Security list and Subnets.
-  - [example-2](examples/example-2): This example creates a VCN in Oracle Cloud Infrastructure including default route table, DHCP options, security list and subnets from scratch, then use terraform-oci-cassandra-cluster module to deploy a Cassandra cluster.
+  - [example-2](examples/example-2): This example creates a VCN (3 ADs scenario) in Oracle Cloud Infrastructure including default route table, DHCP options, security list and subnets from scratch, then use terraform-oci-cassandra-cluster module to deploy a Cassandra cluster.
+  - [example-3](examples/example-3): This example creates a VCN (single ADs scenario) in Oracle Cloud Infrastructure including default route table, DHCP options, security list and subnets from scratch, then use terraform-oci-cassandra-cluster module to deploy a Cassandra cluster.
 
 To deploy a Cassandra cluster using this Module:
 
@@ -31,6 +32,7 @@ module "cassandra" {
   source               = "../../"
   compartment_ocid     = "${var.compartment_ocid}"
   node_count           = "3"
+  seeds_count          = "3"
   availability_domains = "${data.template_file.ad_names.*.rendered}"
   subnet_ocids         = "${var.subnet_ocids}"
   vcn_cidr             = "${var.vcn_cidr}"
@@ -49,7 +51,8 @@ compartment_ocid | Compartment OCID where VCN is created.
 ssh_authorized_keys | Public SSH keys path to be included in the ~/.ssh/authorized_keys file for the default user on the instance.
 ssh_private_key | The private key path to access instance.
 label_prefix | To create unique identifier for multiple clusters in a compartment.
-node_count | The number of Cassandra nodes in the cluster.
+node_count | The number of Cassandra nodes in the cluster (SEED and Non-SEED nodes).
+seeds_count  | The number of Cassandra SEED nodes in the cluster.
 availability_domains | The Availability Domain(s) for Cassandra node(s).
 subnet_ocids | List of Cassandra node subnets' ids.
 vcn_cidr | Virtual Cloud Network's CIDR block.
