@@ -1,4 +1,4 @@
-## Create VCN and Deploy Cassandra Cluster (3 ADs scenario)
+## Create VCN and Deploy Cassandra Cluster (single AD scenario)
 This example creates a VCN, including default route table, DHCP options, security list and subnets, in Oracle Cloud Infrastructure. Then it uses terraform_oci_cassandra_cluster module to deploy a Cassandra cluster.
 
 ### Using this example

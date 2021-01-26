@@ -22,6 +22,11 @@ variable "node_count" {
   default     = 3
 }
 
+variable "seeds_count" {
+  description = "The number of Cassandra seed nodes in the cluster. "
+  default     = 3
+}
+
 variable "availability_domains" {
   description = "The Availability Domain(s) for Cassandra node(s). "
   default     = []
@@ -44,7 +49,7 @@ variable "node_display_name" {
 
 variable "cluster_display_name" {
   description = "The Cassandra cluster name. "
-  default     = "ORCL BMC ROCKS"
+  default     = "Cassandra_Cluster"
 }
 
 variable "image_ocid" {

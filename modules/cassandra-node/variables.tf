@@ -29,6 +29,7 @@ variable "cluster_display_name" {
 }
 
 variable "shape" {
+  type        = string
   description = "Instance shape for node instance to use. "
   default     = ""
 }
@@ -40,6 +41,12 @@ variable "label_prefix" {
 
 variable "number_of_nodes" {
   description = "The number of Cassandra node(s) to create"
+  default     = 3
+}
+
+variable "number_of_seeds" {
+  description = "The number of Cassandra seed node(s) to create"
+  default     = 3
 }
 
 variable "assign_public_ip" {
