@@ -30,17 +30,17 @@ To deploy a Cassandra cluster using this Module:
 ```hcl
 module "cassandra" {
   source               = "../../"
-  compartment_ocid     = "${var.compartment_ocid}"
+  compartment_ocid     = var.compartment_ocid
   node_count           = "3"
   seeds_count          = "3"
-  availability_domains = "${data.template_file.ad_names.*.rendered}"
-  subnet_ocids         = "${var.subnet_ocids}"
-  vcn_cidr             = "${var.vcn_cidr}"
-  image_ocid           = "${var.image_ocid[var.region]}"
+  availability_domains = data.template_file.ad_names.*.rendered
+  subnet_ocids         = var.subnet_ocids
+  vcn_cidr             = var.vcn_cidr
+  image_ocid           = var.image_ocid[var.region]
   storage_port         = "7000"
   ssl_storage_port     = "7001"
-  ssh_authorized_keys  = "${var.ssh_authorized_keys}"
-  ssh_private_key      = "${var.ssh_private_key}"
+  ssh_authorized_keys  = file(var.ssh_authorized_keys)
+  ssh_private_key      = file(var.ssh_private_key)
 }
 
 ```

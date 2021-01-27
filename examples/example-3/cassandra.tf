@@ -14,6 +14,6 @@ module "cassandra" {
   node_shape           = var.node_shape
   storage_port         = var.storage_port
   ssl_storage_port     = var.ssl_storage_port
-  ssh_authorized_keys  = var.ssh_authorized_keys
-  ssh_private_key      = var.ssh_private_key
+  ssh_authorized_keys  = file(var.ssh_authorized_keys)
+  ssh_private_key      = file(var.ssh_private_key)
 }

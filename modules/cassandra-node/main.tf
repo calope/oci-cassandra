@@ -35,7 +35,7 @@ resource "oci_core_instance" "TFCassandraNode" {
   }
 
   metadata = {
-    ssh_authorized_keys = file(var.ssh_authorized_keys)
+    ssh_authorized_keys = var.ssh_authorized_keys
   }
 
   source_details {
@@ -57,7 +57,7 @@ resource "null_resource" "remote-exec-scripts" {
       agent       = false
       timeout     = "5m"
       user        = "opc"
-      private_key = file(var.ssh_private_key)
+      private_key = var.ssh_private_key
     }
 
     content     = data.template_file.setup_node.*.rendered[count.index]
@@ -75,6 +75,7 @@ resource "null_resource" "remote-exec-scripts" {
     }
 
     inline = [
+      "sleep 60",
       "chmod +x /tmp/setup.sh",
       "sudo /tmp/setup.sh",
     ]

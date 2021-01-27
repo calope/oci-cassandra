@@ -82,6 +82,6 @@ module "cassandra" {
   image_ocid           = lookup(data.oci_core_images.InstanceImageOCID.images[0], "id")
   storage_port         = "7000"
   ssl_storage_port     = "7001"
-  ssh_authorized_keys  = var.ssh_authorized_keys
-  ssh_private_key      = var.ssh_private_key
+  ssh_authorized_keys  = file(var.ssh_authorized_keys)
+  ssh_private_key      = file(var.ssh_private_key)
 }
