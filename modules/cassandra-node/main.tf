@@ -71,7 +71,7 @@ resource "null_resource" "remote-exec-scripts" {
       agent       = false
       timeout     = "5m"
       user        = "opc"
-      private_key = file(var.ssh_private_key)
+      private_key = var.ssh_private_key
     }
 
     inline = [
