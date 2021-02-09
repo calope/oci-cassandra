@@ -18,4 +18,5 @@ module "cassandra-node" {
   ssl_storage_port     = var.ssl_storage_port
   ssh_authorized_keys  = var.ssh_authorized_keys
   ssh_private_key      = var.ssh_private_key
+  cassandra_version    = var.cassandra_version
 }

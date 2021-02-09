@@ -5,16 +5,16 @@ data "template_file" "setup_node" {
   template = file("${path.module}/scripts/setup.sh")
 
   vars = {
-    vcn_cidr         = var.vcn_cidr
-    cluster_name     = var.cluster_display_name
-    #private_ips      = join(",", oci_core_instance.TFCassandraNode.*.private_ip)
-    private_ips      = join(",", slice(oci_core_instance.TFCassandraNode.*.private_ip,0,tonumber(var.number_of_seeds)))
-    local_private_ip = oci_core_instance.TFCassandraNode.*.private_ip[count.index]
-    node_ad          = oci_core_instance.TFCassandraNode.*.availability_domain[count.index]
-    node_fd          = oci_core_instance.TFCassandraNode.*.fault_domain[count.index]
-    node_index       = count.index+1
-    storage_port     = var.storage_port
-    ssl_storage_port = var.ssl_storage_port
+    vcn_cidr          = var.vcn_cidr
+    cluster_name      = var.cluster_display_name
+    private_ips       = join(",", slice(oci_core_instance.TFCassandraNode.*.private_ip,0,tonumber(var.number_of_seeds)))
+    local_private_ip  = oci_core_instance.TFCassandraNode.*.private_ip[count.index]
+    node_ad           = oci_core_instance.TFCassandraNode.*.availability_domain[count.index]
+    node_fd           = oci_core_instance.TFCassandraNode.*.fault_domain[count.index]
+    node_index        = count.index+1
+    storage_port      = var.storage_port
+    ssl_storage_port  = var.ssl_storage_port
+    cassandra_version = var.cassandra_version
   }
 }
 

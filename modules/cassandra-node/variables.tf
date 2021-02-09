@@ -76,3 +76,8 @@ variable "storage_port" {
 variable "ssl_storage_port" {
   description = "SSL port for encrypted communication among Cassandra nodes. "
 }
+
+variable "cassandra_version" {
+  description = "Version of Cassandra software"
+  default     = "3.11.10"
+}

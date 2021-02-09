@@ -30,7 +30,8 @@ sudo firewall-cmd --zone=public --add-rich-rule='rule family="ipv4" source addre
 # Add the Apache Cassandra repo, using yum to install Cassandra
 echo -e "[cassandra]\nname=Apache Cassandra\nbaseurl=https://www.apache.org/dist/cassandra/redhat/311x/\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=https://www.apache.org/dist/cassandra/KEYS" | sudo tee /etc/yum.repos.d/cassandra.repo
 #sudo yum install cassandra-3.11.9 -y
-sudo yum install cassandra-3.11.10 -y
+#sudo yum install cassandra-3.11.10 -y
+sudo yum install cassandra-${cassandra_version} -y
 
 # Set the cluster name, use the NVMe backed filesystem for data, and a few more details
 sudo chown cassandra.cassandra /mnt/cassandra/
