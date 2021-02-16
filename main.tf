@@ -19,4 +19,5 @@ module "cassandra-node" {
   ssh_authorized_keys  = var.ssh_authorized_keys
   ssh_private_key      = var.ssh_private_key
   cassandra_version    = var.cassandra_version
+  defined_tags         = var.defined_tags
 }

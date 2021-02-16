@@ -76,3 +76,8 @@ variable "cassandra_version" {
   description = "Version of Cassandra software"
   default     = "3.11.10"
 }
+
+variable "defined_tags" {
+  description = "Defined tags for Cassandra nodes."
+  default     = ""
+}

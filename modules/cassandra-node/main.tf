@@ -26,6 +26,7 @@ resource "oci_core_instance" "TFCassandraNode" {
   display_name        = "${var.label_prefix}${var.node_display_name}-${count.index+1}"
   shape               = var.shape
   fault_domain        = "FAULT-DOMAIN-${element(["1","2","3"],count.index+1)}"
+  defined_tags        = var.defined_tags
 
   create_vnic_details {
     subnet_id        = var.subnet_ids[count.index%length(var.subnet_ids)]

@@ -42,6 +42,7 @@ module "cassandra" {
   ssh_authorized_keys  = file(var.ssh_authorized_keys)
   ssh_private_key      = file(var.ssh_private_key)
   cassandra_version    = "3.11.10"
+  defined_tags         = "<some-tags-you-want-to-add-to-the-nodes>"
 }
 
 ```
@@ -63,3 +64,5 @@ image_ocid | The OCID of an image on which the Cassandra node instance is based.
 node_shape | Instance shape for node instance to use.
 storage_port | TCP port for commands and data among Cassandra nodes.
 ssl_storage_port | SSL port for encrypted communication among Cassandra nodes.
+cassandra_version | Version of the Cassandra to be installed.
+defined_tags | optional tags for Cassandra nodes.
