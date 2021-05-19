@@ -34,6 +34,14 @@ variable "shape" {
   default     = ""
 }
 
+variable "flex_shape_ocpus" {
+  default = ""
+}
+
+variable "flex_shape_memory" {
+  default = ""
+}
+
 variable "label_prefix" {
   description = "To create unique identifier for multiple clusters in a compartment."
   default     = ""
@@ -85,4 +93,18 @@ variable "cassandra_version" {
 variable "defined_tags" {
   description = "Defined tags for Cassandra nodes."
   default     = ""
+}
+
+# Dictionary Locals
+locals {
+  compute_flexible_shapes = [
+    "VM.Standard.E3.Flex",
+    "VM.Standard.E4.Flex"
+    "VM.Optimized3.Flex"
+  ]
+}
+
+# Checks if is using Flexible Compute Shapes
+locals {
+  is_flexible_node_shape = contains(local.compute_flexible_shapes, var.shape)
 }

@@ -11,6 +11,8 @@ module "cassandra-node" {
   cluster_display_name = var.cluster_display_name
   image_id             = var.image_ocid
   shape                = var.node_shape
+  flex_shape_ocpus     = var.node_flex_shape_ocpus
+  flex_shape_memory    = var.node_flex_shape_memory
   label_prefix         = var.label_prefix
   subnet_ids           = var.subnet_ocids
   vcn_cidr             = var.vcn_cidr

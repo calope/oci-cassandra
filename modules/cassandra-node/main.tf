@@ -25,6 +25,15 @@ resource "oci_core_instance" "TFCassandraNode" {
   compartment_id      = var.compartment_ocid
   display_name        = "${var.label_prefix}${var.node_display_name}-${count.index+1}"
   shape               = var.shape
+
+  dynamic "shape_config" {
+    for_each = local.is_flexible_node_shape ? [1] : []
+    content {
+      memory_in_gbs = var.flex_shape_memory
+      ocpus = var.flex_shape_ocpus
+    }
+  }
+
   fault_domain        = "FAULT-DOMAIN-${element(["1","2","3"],count.index+1)}"
   defined_tags        = var.defined_tags
 

@@ -62,6 +62,14 @@ variable "node_shape" {
   default     = "BM.DenseIO1.36"
 }
 
+variable "node_flex_shape_ocpus" {
+  default = ""
+}
+
+variable "node_flex_shape_memory" {
+  default = ""
+}
+
 variable "storage_port" {
   description = "TCP port for commands and data among Cassandra nodes. "
   default     = 7000
