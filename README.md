@@ -62,7 +62,7 @@ node_display_name | The name of the Cassandra node.
 cluster_display_name | The Cassandra cluster name.
 image_ocid | The OCID of an image on which the Cassandra node instance is based. You can refer to https://docs.us-phoenix-1.oraclecloud.com/images/ for more details.
 node_shape | Instance shape for node instance to use.
-node_flex_shape_ocpus | Number of OCPU in case of flexible shape usage.
+node_flex_shape_ocpus | Number of OCPUs in case of flexible shape usage.
 node_flex_shape_memory | Number of GB of memory in case of flexible shape usage.
 storage_port | TCP port for commands and data among Cassandra nodes.
 ssl_storage_port | SSL port for encrypted communication among Cassandra nodes.
