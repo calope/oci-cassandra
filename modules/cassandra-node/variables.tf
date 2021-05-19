@@ -35,11 +35,11 @@ variable "shape" {
 }
 
 variable "flex_shape_ocpus" {
-  default = ""
+  default = 1
 }
 
 variable "flex_shape_memory" {
-  default = ""
+  default = 10
 }
 
 variable "label_prefix" {

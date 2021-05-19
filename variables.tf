@@ -63,11 +63,11 @@ variable "node_shape" {
 }
 
 variable "node_flex_shape_ocpus" {
-  default = ""
+  default = 1
 }
 
 variable "node_flex_shape_memory" {
-  default = ""
+  default = 10
 }
 
 variable "storage_port" {
