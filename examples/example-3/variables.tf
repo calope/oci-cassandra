@@ -7,6 +7,11 @@ variable "compartment_ocid" {}
 variable "ssh_authorized_keys" {}
 variable "ssh_private_key" {}
 
+variable "cassandra_version" {
+  description = "Version of Cassandra software"
+  default     = "3.11.11"
+}
+
 variable "instance_os" {
   description = "Operating system for compute instances"
   default     = "Oracle Linux"
@@ -14,13 +19,21 @@ variable "instance_os" {
 
 variable "linux_os_version" {
   description = "Operating system version for all Linux instances"
-  default     = "7.8"
+  default     = "7.9"
 }
 
 variable "node_shape" {
-  type        = string
-  description = "Instance shape for node instance to use."
-  default     = "VM.Standard2.1"
+  default = "VM.Standard.E3.Flex"
+}
+
+variable "node_flex_shape_ocpus" {
+  description = "Number of Flex shape OCPUs"
+  default     = 1
+}
+
+variable "node_flex_shape_memory" {
+  description = "Amount of Flex shape Memory in GB"
+  default     = 10
 }
 
 variable "label_prefix" {

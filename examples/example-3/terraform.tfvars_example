@@ -5,7 +5,7 @@ fingerprint= "<PEM key fingerprint>"
 private_key_path = "<path to the private key that matches the fingerprint above>"
 
 # Region
-region = "<3 ADs region in which to operate, example: us-ashburn-1, us-phoenix-1>"
+region = "<single AD region in which to operate, example: eu-amsterdam-1>"
 
 # Compartment
 compartment_ocid = "<compartment OCID>"

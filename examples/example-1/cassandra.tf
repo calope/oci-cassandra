@@ -29,18 +29,23 @@ variable "ssh_private_key" {}
 variable "vcn_cidr" {}
 
 variable "subnet_ocids" {
-  type = "list"
+  type = list(string)
 }
 
 variable "linux_os_version" {
   description = "Operating system version for all Linux instances"
-  default     = "7.8"
+  default     = "7.9"
 }
 
 variable "node_shape" {
   type        = string
   description = "Instance shape for node instance to use."
   default     = "VM.Standard2.1"
+}
+
+variable "cassandra_version" {
+  description = "Version of Cassandra software"
+  default     = "3.11.11"
 }
 
 # ---------------------------------------------------------------------------------------------------------------------
@@ -55,6 +60,7 @@ data "oci_core_images" "InstanceImageOCID" {
   compartment_id           = var.compartment_ocid
   operating_system         = var.instance_os
   operating_system_version = var.linux_os_version
+  shape                    = var.node_shape
 
   filter {
     name   = "display_name"
@@ -84,4 +90,5 @@ module "cassandra" {
   ssl_storage_port     = "7001"
   ssh_authorized_keys  = file(var.ssh_authorized_keys)
   ssh_private_key      = file(var.ssh_private_key)
+  cassandra_version    = var.cassandra_version
 }

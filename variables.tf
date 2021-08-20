@@ -82,10 +82,27 @@ variable "ssl_storage_port" {
 
 variable "cassandra_version" {
   description = "Version of Cassandra software"
-  default     = "3.11.10"
+  default     = "3.11.11"
 }
 
 variable "defined_tags" {
   description = "Defined tags for Cassandra nodes."
+  type        = map(string)
+  default     = {}
+}
+
+
+variable "use_private_subnet" {
+  description = "Hide Cassandra nodes in private subnet"
+  default     = false
+}
+
+variable "bastion_service_id" {
+  description = "Bastion Service OCID"
+  default     = ""
+}
+
+variable "bastion_service_region" {
+  description = "Bastion Service Region"
   default     = ""
 }

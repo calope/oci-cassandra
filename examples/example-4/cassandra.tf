@@ -17,5 +17,9 @@ module "cassandra" {
   ssl_storage_port       = var.ssl_storage_port
   ssh_authorized_keys    = file(var.ssh_authorized_keys)
   ssh_private_key        = file(var.ssh_private_key)
+  use_private_subnet     = true
+  bastion_service_id     = oci_bastion_bastion.bastion-service.id
+  bastion_service_region = var.region
   cassandra_version      = var.cassandra_version
 }
+
