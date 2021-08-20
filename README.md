@@ -21,9 +21,10 @@ Each Module has the following folder structure:
 * [root](): This folder contains a root module called cassandra-node to create a Cassandra cluster in OCI.
 * [modules](): This folder contains the reusable code for this Module, broken down into one or more modules.
 * [examples](): This folder contains examples of how to use the modules.
-  - [example-1](examples/example-1): This is an example of how to use terraform-oci-cassandra-cluster module to deploy a Cassandra cluster in OCI by using an existing VCN, Security list and Subnets.
-  - [example-2](examples/example-2): This example creates a VCN (3 ADs scenario) in Oracle Cloud Infrastructure including default route table, DHCP options, security list and subnets from scratch, then use terraform-oci-cassandra-cluster module to deploy a Cassandra cluster.
-  - [example-3](examples/example-3): This example creates a VCN (single ADs scenario) in Oracle Cloud Infrastructure including default route table, DHCP options, security list and subnets from scratch, then use terraform-oci-cassandra-cluster module to deploy a Cassandra cluster.
+  - [example-1](examples/example-1): This is an example of how to use terraform-oci-cassandra-cluster module to deploy a Cassandra cluster in OCI by using an existing VCN, Security list and Subnet.
+  - [example-2](examples/example-2): This example creates a VCN (3 ADs scenario) in Oracle Cloud Infrastructure including default route table, DHCP options, security list and subnet (public) from scratch, then use terraform-oci-cassandra-cluster module to deploy a Cassandra cluster.
+  - [example-3](examples/example-3): This example creates a VCN (single ADs scenario) in Oracle Cloud Infrastructure including default route table, DHCP options, security list and subnet (public) from scratch, then use terraform-oci-cassandra-cluster module to deploy a Cassandra cluster.
+  - [example-4](examples/example-4): This example creates a VCN (single ADs scenario) in Oracle Cloud Infrastructure including default route table, DHCP options, security list and subnets (private for Cassandra, public for Bastion Service) from scratch, then use terraform-oci-cassandra-cluster module to deploy a Cassandra cluster.
 
 To deploy a Cassandra cluster using this Module:
 
