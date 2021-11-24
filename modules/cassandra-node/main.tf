@@ -53,7 +53,7 @@ resource "oci_core_instance" "TFCassandraNode" {
   create_vnic_details {
     subnet_id        = var.subnet_ids[count.index % length(var.subnet_ids)]
     display_name     = "${var.label_prefix}${var.node_display_name}-${count.index + 1}"
-    assign_public_ip = false #var.use_private_subnet ? false : true
+    assign_public_ip = var.use_private_subnet ? false : true
     hostname_label   = "${var.node_display_name}-${count.index + 1}"
   }
 
