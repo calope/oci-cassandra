@@ -19,7 +19,10 @@ if ls /dev/nvme* 1> /dev/null 2>&1; then
     nvme_mdadm_setup
 else
     echo "No NVME drives."
-    sudo mkdir /mnt/cassandra
+		sudo parted -a optimal -s /dev/sda -- mkpart primary xfs 97675264 100%
+		sudo mkfs.xfs /dev/sda4
+		sudo mkdir /mnt/cassandra
+		sudo mount /dev/sda4 /mnt/cassandra
 fi
 
 # Open up the operating system firewall to allow Cassandra to communicate between instances. We limit communication on the Cassandra ports to the VCN subnet.
