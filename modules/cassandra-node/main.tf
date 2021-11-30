@@ -97,7 +97,7 @@ resource "null_resource" "remote-exec-scripts-without-bastion-service" {
     connection {
       host        = oci_core_instance.TFCassandraNode.*.public_ip[count.index]
       agent       = false
-      timeout     = "5m"
+      timeout     = "7m"
       user        = "opc"
       private_key = var.ssh_private_key
     }
@@ -160,7 +160,7 @@ resource "null_resource" "remote-exec-scripts-with-bastion-service" {
     connection {
       host                = oci_core_instance.TFCassandraNode.*.private_ip[count.index]
       agent               = false
-      timeout             = "5m"
+      timeout             = "7m"
       user                = "opc"
       private_key         = var.ssh_private_key
       bastion_host        = "host.bastion.${var.bastion_service_region}.oci.oraclecloud.com"
