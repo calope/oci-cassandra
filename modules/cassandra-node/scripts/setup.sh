@@ -24,7 +24,12 @@ else
 		sudo mkfs.xfs /dev/sda4
 		sudo mkdir /mnt/cassandra
 		sudo mount /dev/sda4 /mnt/cassandra
-
+		sudo yum -y install nfs-utils
+		sudo firewall-cmd --zone=public --add-port=111/tcp --permanent
+		sudo firewall-cmd --zone=public --add-port=2048/tcp --permanent
+		sudo firewall-cmd --zone=public --add-port=2049/tcp --permanent
+		sudo firewall-cmd --zone=public --add-port=2050/tcp --permanent
+		sudo firewall-cmd --reload
 fi
 
 # Open up the operating system firewall to allow Cassandra to communicate between instances. We limit communication on the Cassandra ports to the VCN subnet.
