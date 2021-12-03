@@ -64,7 +64,7 @@ resource "oci_core_instance" "TFCassandraNode" {
   source_details {
     source_id   = var.image_id
     source_type = "image"
-    boot_volume_size_in_gbs = 320
+    boot_volume_size_in_gbs = 620
   }
 
   provisioner "local-exec" {
